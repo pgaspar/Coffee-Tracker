@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Coffee Track</title>
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
+    <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.0/jquery.min.js" type="text/javascript" charset="utf-8"></script>
+    <script src="/js/creation-page.js" type="text/javascript" charset="utf-8"></script>
+    
+    <!-- Le styles -->
+    <link href="/css/bootstrap.css" rel="stylesheet">
+    <style type="text/css">
+      .container {
+        padding-top: 60px;
+      }
+      
+      .btn {
+        height: 24px;
+        vertical-align: middle;
+        font-size: 20px !important;
+        margin-top: -10px;
+        width: 190px !important;
+      }
+      
+      .btn:hover {
+        filter: progid:DXImageTransform.Microsoft.gradient(enabled = false);
+        filter: alpha(opacity=1);
+        -khtml-opacity: 1;
+        -moz-opacity: 1;
+        opacity: 1;
+        cursor: pointer;
+        background-color: #BBB;
+      }
+    </style>
+
+    <!-- Le fav and touch icons -->
+    <link rel="shortcut icon" href="img/fav.png">
+  </head>
+
+  <body>
+    
+    <div class="container">
+      
+      <!-- Main hero unit for a primary marketing message or call to action -->
+      <div class="hero-unit" style="text-align: center">
+        <h1>Ok. E quem és?</h1>
+        
+        <div style="margin-top: 45px">
+          <% @users.each do |u| %>
+            <form action="login" method="post">
+              <input type="hidden" name="id" value="<%= u.id %>">
+              <input type="hidden" name="action" value="<%= action %>">
+              <input type="submit" value="<%= u.name %>" class="btn disabled large">
+            </form>
+          <% end %>
+        </div>
+        
+      </div>
+            
+    </div> <!-- /container -->
+  </body>
+</html>
+

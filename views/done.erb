@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Connect Coffee</title>
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
+    <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.0/jquery.min.js" type="text/javascript" charset="utf-8"></script>
+    
+    <!-- Le styles -->
+    <link href="/css/bootstrap.css" rel="stylesheet">
+    <style type="text/css">
+      .container {
+        padding-top: 60px;
+      }
+      
+      .btn {
+        height: 24px;
+        vertical-align: middle;
+        font-size: 20px !important;
+        margin-top: -10px;
+        width: 190px !important;
+      }
+    </style>
+    
+    <!-- Le fav and touch icons -->
+    <link rel="shortcut icon" href="img/fav.png">
+  </head>
+
+  <body>
+    
+    <div style="width: 940px; margin: auto">
+      <% if @me %><div style="float:right">Olá, <b><%= @me.name %></b>.</div><% end %>
+    </div>
+    
+    <div class="container">
+      
+      <!-- Main hero unit for a primary marketing message or call to action -->
+      <div class="hero-unit" style="text-align: center">
+        <h1><%= confirmation_msg %></h1>
+        
+        <div style="margin: 45px auto 45px auto; width: 50%;">
+          <table class="table bordered-table">
+            <thead>
+              <tr>
+                <th colspan=2 style="text-align: center">O que já bebeste</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><b>Aromático</b></td>
+                <td><%= @me.aromatico %></td>
+              </tr>
+              <tr>
+                <td><b>Intenso</b</td>
+                <td><%= @me.intenso %></td>
+              </tr>
+              <tr>
+                <td><b>Total</b></td>
+                <td><%= (@me.aromatico + @me.intenso)*0.3 %>€</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        
+        <a href="/" class="btn large">&larr; Voltar</a>
+        
+      </div>
+            
+    </div> <!-- /container -->
+  </body>
+</html>
+

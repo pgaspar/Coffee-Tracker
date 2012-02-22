@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Connect Coffee</title>
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
+    <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.0/jquery.min.js" type="text/javascript" charset="utf-8"></script>
+    
+    <!-- Le styles -->
+    <link href="/css/bootstrap.css" rel="stylesheet">
+    <style type="text/css">
+      .container {
+        padding-top: 60px;
+      }
+      
+      .btn {
+        font-size: 20px !important;
+        margin-top: -10px;
+        width: 125px !important;
+      }
+      
+      .btn.aromatico {
+        background-color: #A60020 !important;
+        background-image: -khtml-gradient(linear, left top, left bottom, from(#DE0023), to(#A60020)) !important;
+        background-image: -moz-linear-gradient(top, #DE0023, #A60020) !important;
+        background-image: -ms-linear-gradient(top, #DE0023, #A60020) !important;
+        background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #DE0023), color-stop(100%, #A60020)) !important;
+        background-image: -webkit-linear-gradient(top, #DE0023, #A60020) !important;
+        background-image: -o-linear-gradient(top, #DE0023, #A60020) !important;
+        background-image: linear-gradient(top, #DE0023, #A60020) !important;
+      }
+      
+      .btn.intenso {
+        background-color: #707521 !important;
+        background-image: -khtml-gradient(linear, left top, left bottom, from(#A6B116), to(#707521)) !important;
+        background-image: -moz-linear-gradient(top, #A6B116, #707521) !important;
+        background-image: -ms-linear-gradient(top, #A6B116, #707521) !important;
+        background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #A6B116), color-stop(100%, #707521)) !important;
+        background-image: -webkit-linear-gradient(top, #A6B116, #707521) !important;
+        background-image: -o-linear-gradient(top, #A6B116, #707521) !important;
+        background-image: linear-gradient(top, #A6B116, #707521) !important;
+      }
+    </style>
+    
+    <!-- Le fav and touch icons -->
+    <link rel="shortcut icon" href="img/fav.png">
+  </head>
+
+  <body>
+    <div style="width: 940px; margin: auto">
+      <% if @me %><div style="float:right">Olá, <b><%= @me.name %></b>.</div><% end %>
+    </div>
+    
+    <div class="container">
+      
+      <!-- Main hero unit for a primary marketing message or call to action -->
+      <div class="hero-unit">
+        <h1 style="text-align: center">Bebi um...</h1>
+        
+        <div class="row" style="margin: 40px auto 0px auto; text-align: center">
+          <form method="post" action="/aromatico" style="display: inline"><input type="submit" value="Aromático" class="btn danger aromatico large" style="margin-right: 45px"></form>
+          <form method="post" action="/intenso" style="display: inline"><input type="submit" value="Intenso" class="btn danger intenso large"></form>
+        </div>
+      </div>
+      
+      <div class="well">
+        <h2>Stats</h2>
+        <br />
+        <table class="table bordered-table">
+          <thead>
+            <tr>
+              <th>Nome</th>
+              <th>Aromático</th>
+              <th>Intenso</th>
+              <th>A pagar</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @users.each do |u| %>
+              <tr>
+                <td><%= u.name %></td>
+                <td><%= u.aromatico %></td>
+                <td><%= u.intenso %></td>
+                <td><%= (u.aromatico + u.intenso)*0.3 %>€</td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+      
+    </div> <!-- /container -->
+  </body>
+</html>
+
