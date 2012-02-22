@@ -63,7 +63,7 @@
               </tr>
               <tr>
                 <td><b>Total</b></td>
-                <td><%= (@me.aromatico + @me.intenso)*0.3 %>€</td>
+                <td><%= sprintf "%.2f", (@me.aromatico + @me.intenso)*0.3 %>€</td>
               </tr>
             </tbody>
           </table>

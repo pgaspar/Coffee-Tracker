@@ -88,7 +88,7 @@
                 <td><%= u.name %></td>
                 <td><%= u.aromatico %></td>
                 <td><%= u.intenso %></td>
-                <td><%= (u.aromatico + u.intenso)*0.3 %>€</td>
+                <td><%= sprintf "%.2f", (u.aromatico + u.intenso)*0.3 %>€</td>
               </tr>
             <% end %>
           </tbody>
