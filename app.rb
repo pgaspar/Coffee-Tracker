@@ -71,7 +71,7 @@ post '/:action' do |action|
   @me[action] += 1
   @me.save
   
-  erb :done, :locals => {:confirmation_msg => ["Registado.", "Ok, já apontei.", "Done.", "Agora vai trabalhar.", "E Red Bull, não?"].choice}
+  erb :done, :locals => {:confirmation_msg => ["Registado.", "Ok, já apontei.", "Done.", "Agora vai trabalhar.", "E Red Bull, não?"].sample}
 end
 
 # Helpers
