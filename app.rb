@@ -6,7 +6,7 @@ require 'erb'
 require 'data_mapper'
 require "sinatra/reloader" if development?
 
-enable :sessions
+set :sessions, :expire_after => 15*24*3600 # 2 semanas
 
 # Models
 DataMapper.setup(:default, ENV['DATABASE_URL'] || "sqlite3://#{Dir.pwd}/db.sqlite3")
@@ -57,7 +57,7 @@ post '/login' do
 end
 
 get '/logout' do
-  session[:user] = nil
+  session.clear
   redirect '/'
 end
 
