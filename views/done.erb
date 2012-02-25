@@ -55,15 +55,15 @@
             <tbody>
               <tr>
                 <td><b>Aromático</b></td>
-                <td><%= @me.aromatico %></td>
+                <td><%= @me.num_drinks(:aromatico) %></td>
               </tr>
               <tr>
                 <td><b>Intenso</b</td>
-                <td><%= @me.intenso %></td>
+                <td><%= @me.num_drinks(:intenso) %></td>
               </tr>
               <tr>
                 <td><b>Total</b></td>
-                <td><%= sprintf "%.2f", (@me.aromatico + @me.intenso)*0.3 %>€</td>
+                <td><%= @me.total_price %>€</td>
               </tr>
             </tbody>
           </table>

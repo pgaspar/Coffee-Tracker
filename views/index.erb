@@ -47,6 +47,10 @@
         background-image: -o-linear-gradient(top, #A6B116, #707521) !important;
         background-image: linear-gradient(top, #A6B116, #707521) !important;
       }
+      
+      tr.me {
+        background-color: #EEE;
+      }
     </style>
     
     <!-- Le fav and touch icons -->
@@ -84,11 +88,11 @@
           </thead>
           <tbody>
             <% @users.each do |u| %>
-              <tr>
+              <tr <%= "class='me'" if u == @me %>>
                 <td><%= u.name %></td>
-                <td><%= u.aromatico %></td>
-                <td><%= u.intenso %></td>
-                <td><%= sprintf "%.2f", (u.aromatico + u.intenso)*0.3 %>€</td>
+                <td><%= u.num_drinks(:aromatico) %></td>
+                <td><%= u.num_drinks(:intenso) %></td>
+                <td><%= u.total_price %>€</td>
               </tr>
             <% end %>
           </tbody>
