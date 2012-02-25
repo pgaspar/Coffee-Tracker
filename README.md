@@ -24,7 +24,7 @@ The first version was stitched up in about 4 hours with KISS in mind, so there's
 ### Main issues ###
 
 * The login is cookie based but requires no password (the user selects himself from the list of users) - this doesn't scale and has privacy issues
-* The views are tightly coupled with our needs and are generally awful
+* The views are tightly coupled with our needs and are generally awful (I swear that inline css was already there!)
 * Hardcoded coffee types and prices
 * Site's copy currently in Portuguese
 
