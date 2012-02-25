@@ -16,8 +16,6 @@ class User
   include DataMapper::Resource
   property :id,           Serial
   property :name,         String
-  property :aromatico,    Integer, :default => 0  # For legacy data. Existing records should be converted to new DrinkRecord relations.
-  property :intenso,      Integer, :default => 0  # For legacy data. Existing records should be converted to new DrinkRecord relations.
   
   has n,   :drinkRecords
   
@@ -34,15 +32,15 @@ class User
   end
   
   def num_drinks(type)
-    self[type] + drinkRecords.all(:type => type).size
+    drinkRecords.all(:type => type).size
   end
   
   def total_price
-    sprintf "%.2f", (aromatico+intenso)*0.3 + (drinkRecords.map(&:price).inject(:+) || 0) # Using sprintf to avoid weird float errors (0.5999999 instead of 0.6). Still using legacy data to calculate this value.
+    sprintf "%.2f", drinkRecords.map(&:price).inject(:+) || 0 # Using sprintf to avoid weird float errors (0.5999999 instead of 0.6).
   end
   
   def type_price(type)
-    sprintf "%.2f", self[type]*0.3 + (drinks(type).map(&:price).inject(:+) || 0)  # Still using legacy data to calculate this value.
+    sprintf "%.2f", drinks(type).map(&:price).inject(:+) || 0
   end
 end
 
