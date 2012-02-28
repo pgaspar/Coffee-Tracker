@@ -47,7 +47,6 @@ end
 class DrinkRecord
   include DataMapper::Resource
   property :id,           Serial
-  property :timestamp,    DateTime, :default => Time.now
   property :created_at,   DateTime
   property :type,         Enum[:intenso, :aromatico], :required => true   # Add new types here and on the views (they're hardcoded)
   property :price,        Float, :default => 0.3
