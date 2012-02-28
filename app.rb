@@ -22,7 +22,7 @@ class User
   def drinks_by_month(month, year)
     st_time = Date.new(year, month)
     fin_time = st_time.next_month
-    drinkRecords.all(:timestamp => (st_time.to_time..fin_time.to_time))
+    drinkRecords.all(:created_at => (st_time.to_time..fin_time.to_time))
   end
   
   # Some utility methods - naming sucks.
@@ -48,6 +48,7 @@ class DrinkRecord
   include DataMapper::Resource
   property :id,           Serial
   property :timestamp,    DateTime, :default => Time.now
+  property :created_at,   DateTime
   property :type,         Enum[:intenso, :aromatico], :required => true   # Add new types here and on the views (they're hardcoded)
   property :price,        Float, :default => 0.3
   
@@ -71,7 +72,7 @@ end
 get '/admin' do
   protected!
   @users = User.all
-  erb :admin
+  erb :"admin/index"
 end
 
 post '/add' do
@@ -84,6 +85,12 @@ post '/remove' do
   protected!
   User.get(params[:id]).destroy
   redirect '/admin'
+end
+
+get '/admin/user/:id' do
+  protected!
+  @user = User.get(params[:id])
+  erb :"admin/user"
 end
 
 post '/login' do

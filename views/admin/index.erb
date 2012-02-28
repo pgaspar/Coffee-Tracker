@@ -1,0 +1,11 @@
+<form action="add" method="post" accept-charset="utf-8">
+  <input type="text" name="name" value="" id="name" placeholder="Name...">
+  <input type="submit" value="Add User &rarr;">
+</form>
+
+Users: <br />
+<ul>
+  <% @users.each do |u| %>
+    <li><a href="/admin/user/<%= u.id %>"><%= u.name %></a> <form action="remove" method="post" style="display: inline-block;"><input type="hidden" name="id" value="<%= u.id %>"><input type="submit" value="&times;" onclick="return confirm('Do you really want to delete?')"></form></li>
+  <% end %>
+</ul>

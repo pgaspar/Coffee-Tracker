@@ -1,0 +1,38 @@
+<h1><%= @user.name %></h1>
+
+<table border="1" cellspacing="0" cellpadding="4">
+  <tr>
+    <td><b>Aromático</b></td>
+    <td><%= @user.num_drinks(:aromatico) %></td>
+  </tr>
+  <tr>
+    <td><b>Intenso</b</td>
+    <td><%= @user.num_drinks(:intenso) %></td>
+  </tr>
+  <tr>
+    <td><b>Total</b></td>
+    <td><%= @user.total_price %>€</td>
+  </tr>
+</table>
+
+<h2>Activity</h2>
+
+<table border="1" cellspacing="0" cellpadding="4" style="width: 500px">
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Timestamp</th>
+      <th>Type</th>
+      <th>Price</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @user.drinkRecords.all(:order => [ :timestamp.desc ]).each do |r| %>
+    <tr>
+      <td><%= r.id %></td>
+      <td><%= r.timestamp.to_time.utc %></td>
+      <td><%= r.type %></td>
+      <td><%= r.price %>€</td>
+    </tr>
+  <% end %>
+</ul>
