@@ -21,16 +21,16 @@
   <thead>
     <tr>
       <th>ID</th>
-      <th>Timestamp</th>
+      <th>Created at</th>
       <th>Type</th>
       <th>Price</th>
     </tr>
   </thead>
   <tbody>
-    <% @user.drinkRecords.all(:order => [ :timestamp.desc ]).each do |r| %>
+    <% @user.drinkRecords.all(:order => [ :created_at.desc ]).each do |r| %>
     <tr>
       <td><%= r.id %></td>
-      <td><%= r.timestamp.to_time.utc %></td>
+      <td><%= r.created_at.to_time.utc %></td>
       <td><%= r.type %></td>
       <td><%= r.price %>€</td>
     </tr>
