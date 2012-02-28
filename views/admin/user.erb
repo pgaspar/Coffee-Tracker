@@ -32,7 +32,7 @@
       <td><%= r.id %></td>
       <td><%= r.created_at.to_time.utc %></td>
       <td><%= r.type %></td>
-      <td><%= r.price %>€</td>
+      <td><%= sprintf "%.2f", r.price %>€</td>
     </tr>
   <% end %>
 </ul>
