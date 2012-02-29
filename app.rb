@@ -1,16 +1,22 @@
 # encoding: utf-8
 require 'rubygems'
+require 'bundler/setup'
+
 require 'sinatra'
 require 'erb'
-
 require 'data_mapper'
 require "sinatra/reloader" if development?
 require 'date'
+require 'rack-datamapper-session'
 
-set :sessions, :expire_after => 15*24*3600 # 2 semanas
+# Database
+DataMapper.setup(:default, ENV['DATABASE_URL'] || "sqlite3://#{Dir.pwd}/db.sqlite3")
+
+#Session
+
+use Rack::Session::DataMapper, :expire_after => 15*24*3600 # 2 semanas
 
 # Models
-DataMapper.setup(:default, ENV['DATABASE_URL'] || "sqlite3://#{Dir.pwd}/db.sqlite3")
 
 class User
   include DataMapper::Resource

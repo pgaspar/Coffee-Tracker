@@ -1,3 +1,11 @@
+GIT
+  remote: git://github.com/tung/rack-datamapper-session.git
+  revision: 3053c97f0bb5b39c34ed737ddcee53dfcc5ce110
+  specs:
+    rack-datamapper-session (0.4)
+      dm-core (>= 0.9.10)
+      rack (>= 1.3)
+
 GEM
   remote: http://rubygems.org/
   specs:
@@ -68,9 +76,9 @@ GEM
     rack-test (0.6.1)
       rack (>= 1.0)
     sinatra (1.3.2)
-      rack (~> 1.3, >= 1.3.6)
+      rack (>= 1.3.6, ~> 1.3)
       rack-protection (~> 1.2)
-      tilt (~> 1.3, >= 1.3.3)
+      tilt (>= 1.3.3, ~> 1.3)
     sinatra-contrib (1.3.1)
       backports (>= 2.0)
       eventmachine
@@ -91,5 +99,6 @@ DEPENDENCIES
   data_mapper
   dm-postgres-adapter
   dm-sqlite-adapter
+  rack-datamapper-session!
   sinatra
   sinatra-reloader
